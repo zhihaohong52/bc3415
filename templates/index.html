@@ -1,1 +1,112 @@
-<h2> Welcome to NTU!!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Robo Advisor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 90%;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-box {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .container img {
+                margin-right: 2rem;
+                margin-bottom: 0;
+            }
+
+            .text-box {
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h2 {
+                font-size: 3.5rem;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media.istockphoto.com/id/1634086519/photo/human-and-robot-hands-forming-a-heart-shape-together-ai-and-human-collaboration-concept.jpg?s=1024x1024&w=is&k=20&c=y-Hh5I7_kkPvympGEHh_aG9tc9_78YN3X-3dAoHxhVw=">
+        <div class="text-box">
+            <h2>Welcome to Robo Advisor</h2>
+            <h3><p>My name is SS, would like to know your name?</p></h3>
+        </div>
+    </div>
+</body>
+</html>
