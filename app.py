@@ -23,8 +23,13 @@ def makersuite():
     return(render_template("makersuite.html",r=r.last))
 
 @app.route("/prediction",methods=["GET","POST"])
-def predcition():
+def prediction():
     return(render_template("prediction.html"))
-
+  
+@app.route("/joke",methods=["GET","POST"])
+def joke():
+    r = palm.chat(prompt="Tell me a list of jokes about Singapore", **model)
+    return(render_template("joke.html",r=r.last))
+      
 if __name__ == "__main__":
     app.run()
