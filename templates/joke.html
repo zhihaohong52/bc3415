@@ -37,15 +37,6 @@
             white-space: pre-wrap; /* To handle \n (new line) characters */
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;
@@ -55,6 +46,7 @@
             cursor: pointer;
             width: 100%;
             font-size: 16px;
+            margin-bottom: 10px;
         }
 
         input[type="submit"]:hover {
@@ -78,10 +70,12 @@
     <div class="container">
         <h2>Jokes</h2>
         <h4>{{r}}</h4>
+        <form action="/joke" method="post">
+            <input type="submit" value="Get Another Joke">
+        </form>
         <form action="/" method="post">
             <input type="submit" value="Main">
         </form>
     </div>
 </body>
 </html>
-
