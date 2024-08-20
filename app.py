@@ -19,28 +19,7 @@ jokes = [
     "What did one HDB block say to the other? 'You lift me up!'",
     "Why did the durian go to the gym? To get stronger spikes!",
     "What do Singaporeans say when they don’t want to take sides? 'Anything, lah!'",
-    "Why do Singaporeans never get lost? Because there’s a hawker centre on every corner!",
-    "Why don't Singaporeans ever play Monopoly? Because they've already mastered the art of property investment.",
-    "Why was the Singaporean computer cold? It left its 'Windows' open!",
-    "Why don't Singaporeans ever tell secrets? Because they don't want to 'leak' information like Orchard Road during a flood.",
-    "Why was the MRT so crowded? Because everyone wanted to 'Stand Clear of the Closing Doors!'",
-    "Why did the Singaporean bring a ladder to work? To reach the top of the CPF ladder!",
-    "Why did the chili crab cross the road? To join its friends at the seafood restaurant!",
-    "Why did the hawker centre stall close early? Because they ran out of 'shiok' food!",
-    "Why are Singaporean roads so smart? Because they have ERP gantries to keep them in check!",
-    "Why do Singaporeans love air conditioning? Because it's the only way to escape the 'lah' in the hot weather!",
-    "Why don’t Singaporeans use GPS? Because they already know where the best makan places are!",
-    "Why was the Singaporean so punctual? Because he didn’t want to miss the 'chope' time!",
-    "Why don't Singaporeans use calendars? Because every day is National Day when you’re this proud!",
-    "Why did the Singaporean cross the road? To get to the other side... before the ERP charges kicked in again!",
-    "Why did the Singaporean office worker bring a pillow to work? To 'chope' their seat for the next meeting!",
-    "Why was the Singaporean baker so successful? Because he kneaded the dough!",
-    "Why was the MRT so clean? Because even germs have to pay an ERP charge!",
-    "Why do Singaporeans never play hide and seek? Because no one can hide from the efficient government!",
-    "Why did the chicken rice vendor become a millionaire? Because he knew how to 'rice' to the occasion!",
-    "Why was the kopi so strong? Because it had 'gao' power!",
-    "Why do Singaporeans love to queue? Because the longer the queue, the better the food!",
-    "Why don’t Singaporeans play poker? Because they already know how to 'chope' their cards!"
+    "Why do Singaporeans never get lost? Because there’s a hawker centre on every corner!"
 ]
 
 app = Flask(__name__)
