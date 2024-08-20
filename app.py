@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 import google.generativeai as palm
+import os
+
+api = os.getenv("MAKERSUITE_API_TOKEN")
+palm.configure(api_key=api)
+model = {"model":"models/chat-bison-001"}
 
 app = Flask(__name__)
-
-palm.configure(api_key=api)
-models = ("model":"models/chat-bison-001")
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
@@ -21,7 +23,7 @@ def makersuite():
   return(render_template("makersuit.html", r=r.last))
 
 @app.route("/prediction", methods = ["GET", "POST"])
-def index():
+def prediction():
   return(render_template("prediction.html"))
 
 if __name__ == "__main__":
