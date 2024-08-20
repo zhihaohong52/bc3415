@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
+import google.generativeai as palm
 
 app = Flask(__name__)
+
+palm.configure(api_key=api)
+models = ("model":"models/chat-bison-001")
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
@@ -13,8 +17,8 @@ def financial_QA():
 @app.route("/makersuite", methods = ["GET", "POST"])
 def makersuite():
   q = request.form.get("q")
-  
-  return(render_template("makersuit.html"), r=r.last)
+  r = palm.chat(prompt=q, **model)
+  return(render_template("makersuit.html", r=r.last))
 
 @app.route("/prediction", methods = ["GET", "POST"])
 def index():
