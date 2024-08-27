@@ -2,6 +2,7 @@ from flask import Flask,render_template,request
 import google.generativeai as palm
 import os
 import random
+import wikipedia
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
 palm.configure(api_key=api)
@@ -35,8 +36,13 @@ def financial_QA():
 @app.route("/makersuite",methods=["GET","POST"])
 def makersuite():
     q = request.form.get("q")
-    r = palm.generate_text(**model, prompt=q)
-    return(render_template("makersuite.html",r=r.last))
+    try:
+        r = palm.generate_text(**model, prompt=q)
+    except Exception:
+        r = wikipedia.summary(q, sentences=5)
+        return (render_template("makersuite.html", r=r))
+
+    return(render_template("makersuite.html",r=r.result))
 
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
