@@ -35,13 +35,13 @@ def financial_QA():
 @app.route("/makersuite",methods=["GET","POST"])
 def makersuite():
     q = request.form.get("q")
-    r = palm.chat(prompt=q, **model)
+    r = palm.generate_text(**model, prompt=q)
     return(render_template("makersuite.html",r=r.last))
 
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
     return(render_template("prediction.html"))
-  
+
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
     if request.method == "POST":
@@ -49,6 +49,6 @@ def joke():
     else:
         selected_joke = random.choice(jokes)
     return render_template("joke.html", r=selected_joke)
-      
+
 if __name__ == "__main__":
     app.run()
