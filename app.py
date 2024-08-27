@@ -6,7 +6,15 @@ import wikipedia
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
 palm.configure(api_key=api)
-model = {"model": "models/chat-bison-001"}
+
+config = palm.GenerationConfig(temperature=0.5)
+
+model = palm.GenerativeModel("gemini-1.5-flash", generation_config=config)
+chat = model.start_chat(
+    history=[
+        {"role": "user", "parts": "Hello, you are a wikipedia chatbot who can provide one-paragraph summaries of various topics. Do not ask questions, just provide information."}
+    ]
+)
 
 # List of Singaporean jokes
 # Extended list of Singaporean jokes
@@ -37,12 +45,12 @@ def financial_QA():
 def makersuite():
     q = request.form.get("q")
     try:
-        r = palm.generate_text(**model, prompt=q)
-    except Exception:
+        response = chat.send_message(q)
+        r = response.text
+    except Exception as e:
+        print(e)
         r = wikipedia.summary(q, sentences=5)
-        return (render_template("makersuite.html", r=r))
-
-    return(render_template("makersuite.html",r=r.result))
+    return (render_template("makersuite.html", r=r))
 
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
