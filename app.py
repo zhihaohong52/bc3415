@@ -16,20 +16,18 @@ chat = model.start_chat(
     ]
 )
 
-# List of Singaporean jokes
-# Extended list of Singaporean jokes
-jokes = [
-    "The only thing faster than Singapore's MRT during peak hours is the way we 'chope' seats with a tissue packet.",
-    "Why did the chicken cross the road in Singapore? To get to the other side before the ERP charges kick in!",
-    "In Singapore, the quickest way to lose friends is to say, 'Let's split the bill equally!'",
-    "Why don't Singaporeans play hide and seek? Good luck hiding in a country where everything is so efficient!",
-    "In Singapore, the best way to avoid a parking fine is to simply not drive.",
-    "Why did the kopitiam uncle refuse to serve kopi? Because the coffee was already 'gao' enough!",
-    "What did one HDB block say to the other? 'You lift me up!'",
-    "Why did the durian go to the gym? To get stronger spikes!",
-    "What do Singaporeans say when they don’t want to take sides? 'Anything, lah!'",
-    "Why do Singaporeans never get lost? Because there’s a hawker centre on every corner!"
-]
+jokes = ["The only thing faster than Singapore's MRT during peak hours is the way we chope seats with a tissue packet." ,
+         "Jay Powell has signalled he is ready to cut US interest rates in September, as he warned that 'downside risks' to the labour market had increased."]
+
+chat2 = model.start_chat(
+    history=[
+        {"role": "user", "parts": "Hello, please tell me jokes about Singapore or financial news."},
+        {"role": "model", "parts": "Sure, I can do that. Give me a moment to think of some jokes."},
+        {"role": "user", "parts": f"Some examples of jokes are: {jokes}"},
+    ]
+)
+
+choice = ["Singapore", "financial news"]
 
 app = Flask(__name__)
 
@@ -58,11 +56,8 @@ def prediction():
 
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
-    if request.method == "POST":
-        selected_joke = random.choice(jokes)
-    else:
-        selected_joke = random.choice(jokes)
-    return render_template("joke.html", r=selected_joke)
+    response = chat2.send_message("Give me a joke about " + random.choice(choice))
+    return render_template("joke.html", r=response.text)
 
 if __name__ == "__main__":
     app.run()
