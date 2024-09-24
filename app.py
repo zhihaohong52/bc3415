@@ -1,15 +1,15 @@
 from flask import Flask,render_template,request
-import google.generativeai as palm
+import google.generativeai as genai
 import os
 import random
 import wikipedia
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
-palm.configure(api_key=api)
+genai.configure(api_key=api)
 
-config = palm.GenerationConfig(temperature=0.5)
+config = genai.GenerationConfig(temperature=0.5)
 
-model = palm.GenerativeModel("gemini-1.5-flash", generation_config=config)
+model = genai.GenerativeModel("gemini-1.5-flash")
 chat = model.start_chat(
     history=[
         {"role": "user", "parts": "Hello, you are a wikipedia chatbot who can provide one-paragraph summaries of various topics. Do not ask questions, just provide information."}
@@ -49,10 +49,6 @@ def makersuite():
         print(e)
         r = wikipedia.summary(q, sentences=5)
     return (render_template("makersuite.html", r=r))
-
-@app.route("/prediction",methods=["GET","POST"])
-def prediction():
-    return(render_template("prediction.html"))
 
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
