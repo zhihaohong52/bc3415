@@ -50,6 +50,10 @@ def makersuite():
         r = wikipedia.summary(q, sentences=5)
     return (render_template("makersuite.html", r=r))
 
+@app.route("/prediction", methods=["GET", "POST"])
+def prediction():
+    return render_template("prediction.html")
+
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
     response = chat2.send_message("Give me a joke about " + random.choice(choice))
