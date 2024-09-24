@@ -9,7 +9,7 @@ genai.configure(api_key=api)
 
 config = genai.GenerationConfig(temperature=0.5)
 
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-1.5-flash", generation_config=config)
 chat = model.start_chat(
     history=[
         {"role": "user", "parts": "Hello, you are a wikipedia chatbot who can provide one-paragraph summaries of various topics. Do not ask questions, just provide information."}
