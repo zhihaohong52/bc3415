@@ -3,6 +3,9 @@ import google.generativeai as genai
 import os
 import random
 import wikipedia
+import textblob
+
+from textblob import TextBlob
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
 genai.configure(api_key=api)
@@ -58,6 +61,21 @@ def prediction():
 def joke():
     response = chat2.send_message("Give me a joke about " + random.choice(choice))
     return render_template("joke.html", r=response.text)
+
+@app.route("/sentiment", methods=["GET", "POST"])
+def sentiment():
+    if request.method == "POST":
+        t = request.form.get("t")
+        if t:
+            analysis = TextBlob(t).sentiment
+            print(analysis)
+            # Extract polarity and subjectivity from the sentiment analysis
+            sentiment = {
+                "polarity": analysis.polarity,
+                "subjectivity": analysis.subjectivity
+            }
+            return render_template("sentiment.html", sentiment=sentiment)
+    return render_template("sentiment.html", sentiment=None)
 
 if __name__ == "__main__":
     app.run()
