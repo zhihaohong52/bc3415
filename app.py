@@ -62,20 +62,19 @@ def joke():
     response = chat2.send_message("Give me a joke about " + random.choice(choice))
     return render_template("joke.html", r=response.text)
 
-@app.route("/sentiment", methods=["GET", "POST"])
-def sentiment():
-    if request.method == "POST":
-        t = request.form.get("t")
-        if t:
-            analysis = TextBlob(t).sentiment
-            print(analysis)
-            # Extract polarity and subjectivity from the sentiment analysis
-            sentiment = {
-                "polarity": analysis.polarity,
-                "subjectivity": analysis.subjectivity
-            }
-            return render_template("sentiment.html", sentiment=sentiment)
-    return render_template("sentiment.html", sentiment=None)
+@app.route("/SA",methods=["GET","POST"])
+def SA():
+    return(render_template("SA.html"))
+
+@app.route("/SAR",methods=["GET","POST"])
+def SAR():
+    q = request.form.get("q")
+    r = TextBlob(q).sentiment
+    return(render_template("SAR.html",r=r))
+
+@app.route("/TM",methods=["GET","POST"])
+def TM():
+    return(render_template("TM.html"))
 
 if __name__ == "__main__":
     app.run()
